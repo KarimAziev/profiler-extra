@@ -167,8 +167,7 @@ Results are displayed with the `profiler-extra-toggle' command."
      (when transient-current-command
        (transient--redisplay)))))
 
-
-;;;###autoload (autoload 'profiler-extra-menu nil nil t)
+;;;###autoload (autoload 'profiler-extra-menu "profiler-extra.el" nil t)
 (transient-define-prefix profiler-extra-menu ()
   "Transient menu for common Profiling commands."
   [[("l" profiler-extra-change-sampling-interval
