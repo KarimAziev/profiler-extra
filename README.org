@@ -27,12 +27,12 @@ Add the downloaded directory to the load path:
              :repo "KarimAziev/profiler-extra"
              :type git
              :host github)
-  :bind (("<f5>" . profiler-extra-toggle)
+  :bind (("<f5>" . profiler-extra-menu)
          (:map profiler-extra-map
-               ("." . profiler-extra-buffer-menu)
+               ("." . profiler-extra-menu)
                ("s" . profiler-extra-toggle-sorting)
-               ("C-." . profiler-extra-buffer-menu)
-               ("C-h ?" . profiler-extra-buffer-menu)
+               ("C-." . profiler-extra-menu)
+               ("C-h ?" . profiler-extra-menu)
                ([tab] . profiler-extra-toggle-tree-entry)
                ([backtab] . profiler-extra-toggle-all-entries)))
   :hook (profiler-report-mode . profiler-extra-buffer-mode))
@@ -42,44 +42,16 @@ Add the downloaded directory to the load path:
 
 *** ~profiler-extra-buffer-mode~
 Add commands and transient menus to =profiler-report-mode=.
-| Key   | Command                       | 
-|-------+-------------------------------|
-| .     | profiler-extra-buffer-menu    |
-| s     | profiler-extra-toggle-sorting |
-| C-.   | profiler-extra-buffer-menu    |
-| C-h ? | profiler-extra-buffer-menu    |
+| Key       | Command                         |
+|-----------+---------------------------------|
+| ~s~       | Toggle sorting                  |
+| ~tab~     | Toggle collapsing whole entry   |
+| ~backtab~ | Toggle collapsing whole entries |
+| ~.~       | Show transient menu             |
+| ~C-.~     | Show transient menu             |
+| ~C-h ?~   | Show transient menu             |
 
-** Transient
 
-*** ~profiler-extra-buffer-menu~
-Transient menu for =profiler-report-mode=.
-*** ~profiler-extra-menu~
-Transient menu for common Profiling commands.
-** Keymaps
-
-*** ~profiler-extra-map~
-| Key   | Command                       | 
-|-------+-------------------------------|
-| .     | profiler-extra-buffer-menu    |
-| s     | profiler-extra-toggle-sorting |
-| C-.   | profiler-extra-buffer-menu    |
-| C-h ? | profiler-extra-buffer-menu    |
-** Commands
-
-*** ~profiler-extra-change-sampling-interval~
-Change sampling profiler sampling interval.
-*** ~profiler-extra-toggle-sorting~
-Toggle sorting in =profiler-report-mode=.
-*** ~profiler-extra-toggle-all-entries~
-Toggle showing all entries in =profiler-report-mode=.
-*** ~profiler-extra-hide-all-entries~
-Hide all entries in =profiler-report-mode=.
-*** ~profiler-extra-toggle-tree-entry~
-Expand all entries.
-*** ~profiler-extra-expand-all-entries~
-Show all entries in =profiler-report-mode=.
-*** ~profiler-extra-toggle~
-Run profiler if not running, otherwise show report.
 ** Customization
 
 *** ~profiler-extra-reset-after-report~
