@@ -1,0 +1,86 @@
+* profiler-extra
+
+Extra commands For Native Profiler.
+
+** Installation
+
+Emacs >= 28.1 is required.
+
+*** Manual
+
+Download the source code and put it wherever you like, e.g. into =~/.emacs.d/profiler-extra/=
+
+#+begin_src shell :eval no
+git clone https://github.com/KarimAziev/profiler-extra.git ~/.emacs.d/profiler-extra/
+#+end_src
+
+Add the downloaded directory to the load path:
+
+#+begin_src elisp :eval no
+(add-to-list 'load-path "~/.emacs.d/profiler-extra/")
+(require 'profiler-extra)
+#+end_src
+
+#+begin_src elisp :eval no
+(use-package profiler-extra
+  :straight (profiler-extra
+             :repo "KarimAziev/profiler-extra"
+             :type git
+             :host github)
+  :bind (("<f5>" . profiler-extra-toggle)
+         (:map profiler-extra-map
+               ("." . profiler-extra-buffer-menu)
+               ("s" . profiler-extra-toggle-sorting)
+               ("C-." . profiler-extra-buffer-menu)
+               ("C-h ?" . profiler-extra-buffer-menu)
+               ([tab] . profiler-extra-toggle-tree-entry)
+               ([backtab] . profiler-extra-toggle-tree-entry)))
+  :hook (profiler-report-mode . profiler-extra-buffer-mode))
+#+end_src
+
+** Minor mode
+
+*** ~profiler-extra-buffer-mode~
+Add commands and transient menus to =profiler-report-mode=.
+| Key   | Command                       | 
+|-------+-------------------------------|
+| .     | profiler-extra-buffer-menu    |
+| s     | profiler-extra-toggle-sorting |
+| C-.   | profiler-extra-buffer-menu    |
+| C-h ? | profiler-extra-buffer-menu    |
+
+** Transient
+
+*** ~profiler-extra-buffer-menu~
+Transient menu for =profiler-report-mode=.
+*** ~profiler-extra-menu~
+Transient menu for common Profiling commands.
+** Keymaps
+
+*** ~profiler-extra-map~
+| Key   | Command                       | 
+|-------+-------------------------------|
+| .     | profiler-extra-buffer-menu    |
+| s     | profiler-extra-toggle-sorting |
+| C-.   | profiler-extra-buffer-menu    |
+| C-h ? | profiler-extra-buffer-menu    |
+** Commands
+
+*** ~profiler-extra-change-sampling-interval~
+Change sampling profiler sampling interval.
+*** ~profiler-extra-toggle-sorting~
+Toggle sorting in =profiler-report-mode=.
+*** ~profiler-extra-toggle-all-entries~
+Toggle showing all entries in =profiler-report-mode=.
+*** ~profiler-extra-hide-all-entries~
+Hide all entries in =profiler-report-mode=.
+*** ~profiler-extra-toggle-tree-entry~
+Expand all entries.
+*** ~profiler-extra-expand-all-entries~
+Show all entries in =profiler-report-mode=.
+*** ~profiler-extra-toggle~
+Run profiler if not running, otherwise show report.
+** Customization
+
+*** ~profiler-extra-reset-after-report~
+Non-nil means reset all profiling info after results are displayed. Results are displayed with the =profiler-extra-toggle= command.
