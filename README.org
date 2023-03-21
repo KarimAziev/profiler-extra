@@ -34,7 +34,7 @@ Add the downloaded directory to the load path:
                ("C-." . profiler-extra-buffer-menu)
                ("C-h ?" . profiler-extra-buffer-menu)
                ([tab] . profiler-extra-toggle-tree-entry)
-               ([backtab] . profiler-extra-toggle-tree-entry)))
+               ([backtab] . profiler-extra-toggle-all-entries)))
   :hook (profiler-report-mode . profiler-extra-buffer-mode))
 #+end_src
 
