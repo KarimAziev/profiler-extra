@@ -228,15 +228,19 @@ Results are displayed with the commands `profiler-extra-report' and
 ;;;###autoload (autoload 'profiler-extra-elp "profiler-extra.el" nil t)
 (transient-define-prefix profiler-extra-elp ()
   "ELP menu."
-  [["ELP"
-    ("i" "Instrument Function..." elp-instrument-function)
-    ("n" "Instrument Package..." elp-instrument-package)
-    ("o" "Show Profiling Results" elp-results)
-    ("r" "Reset Counters for Function..." elp-reset-function)
-    ("e" "Reset Counters for All Functions" elp-reset-all)
-    ("K" "Remove Instrumentation for All Functions" elp-restore-all)
-    ("v" "Remove Instrumentation for Function..."
-     elp-restore-function)]])
+  ["Emacs Lisp Profiler"
+   ("i" "Instrument Function..." elp-instrument-function)
+   ("n" "Instrument Package..." elp-instrument-package)
+   ""
+   ("s" "Show Profiling Results" elp-results)
+   ("r" "Reset Counters for Function..." elp-reset-function :transient t)
+   ("e" "Reset Counters for All Functions" elp-reset-all :transient t)
+   ""
+   ("K" "Remove Instrumentation for All Functions" elp-restore-all
+    :transient t)
+   ("v" "Remove Instrumentation for Function..."
+    elp-restore-function :transient t)]
+  [("l" "Native Profiler" profiler-extra-menu)])
 
 
 ;;;###autoload (autoload 'profiler-extra-menu "profiler-extra.el" nil t)
@@ -345,6 +349,7 @@ Results are displayed with the commands `profiler-extra-report' and
                                         (bound-and-true-p profiler-cpu-log))
                                     'transient-enabled-suffix
                                   'transient-inapt-suffix))))]]
+  [("e" "Emacs Lisp Profiler" profiler-extra-elp)]
   (interactive)
   (if (not profiler-extra-recording)
       (transient-setup 'profiler-extra-menu)
