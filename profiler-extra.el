@@ -365,6 +365,9 @@ Results are displayed with the commands `profiler-extra-report' and
     (define-key map (kbd "<backtab>") #'profiler-extra-toggle-all-entries)
     map))
 
+(easy-menu-add-item nil '("emacs-lisp")
+                    ["Profiler extra" profiler-extra t])
+
 
 ;;;###autoload
 (define-minor-mode profiler-extra-buffer-mode
