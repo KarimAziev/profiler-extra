@@ -366,7 +366,7 @@ Results are displayed with the commands `profiler-extra-report' and
     map))
 
 (easy-menu-add-item nil '("emacs-lisp")
-                    ["Profiler extra" profiler-extra t])
+                    ["Profiler extra" profiler-extra-menu t])
 
 
 ;;;###autoload
