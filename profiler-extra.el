@@ -253,7 +253,7 @@ Results are displayed with the commands `profiler-extra-report' and
      (when profiler-extra-last-mode
        (remove ""
                (split-string
-                profiler-extra-last-mode "+" t)))
+                profiler-extra-last-mode "\\+" t)))
      (list "cpu" "mem")))
   [:if-derived
    profiler-report-mode
